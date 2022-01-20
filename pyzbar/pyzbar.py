@@ -208,7 +208,7 @@ def decode(image, symbols=None, binary=False, x_density=None, y_density=None):
             # them.
             for symbol in symbols:
                 zbar_image_scanner_set_config(
-                    scanner, symbol, ZBarConfig.CFG_ENABLE, 0
+                    scanner, symbol, ZBarConfig.CFG_ENABLE, 1
                 )
         # attempt to disable scan density for x axis
         # http://zbar.sourceforge.net/iphone/sdkdoc/optimizing.html#limit-the-scan-density
