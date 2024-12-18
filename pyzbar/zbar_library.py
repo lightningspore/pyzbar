@@ -2,10 +2,20 @@
 """
 import platform
 import sys
+import os
 
 from ctypes import cdll
 from ctypes.util import find_library
 from pathlib import Path
+
+original_find_library = find_library
+
+# Create replacement function that returns your library path
+def find_library(name):
+    if name == 'zbar':
+	zbar_path = os.environ("ZBAR_PATH", "/usr/lib/libzbar.so.0")
+        return zbar_path
+    return original_find_library(name)  # Fall back to original for other libraries
 
 __all__ = ['load']
 
